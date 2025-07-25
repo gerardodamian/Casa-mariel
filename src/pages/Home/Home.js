@@ -11,6 +11,7 @@ import {
 import { storeInfo, weeklyOffers, categories } from "../../data/storeData";
 import casaFachada from "../../assets/images/casa.webp";
 import "./Home.css";
+import { motion } from "framer-motion";
 
 const Home = () => {
     const [currentOffer, setCurrentOffer] = useState(0);
@@ -110,9 +111,14 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero">
                 <div className="hero-content">
-                    <h1 className="hero-title">
+                    <motion.h1
+                        className="hero-title"
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         Bienvenido a {storeInfo.name}
-                    </h1>
+                    </motion.h1>
                     <p className="hero-subtitle">
                         {storeInfo.slogan} - Encuentra todo lo que necesitas en
                         un solo lugar
@@ -177,9 +183,10 @@ const Home = () => {
                         <div className="store-info">
                             <h2 className="section-title">Nuestra Tienda</h2>
                             <p className="store-description">
-                                Te invitamos a conocer Casa Mariel, un espacio diseñado 
-                                pensando en ti y tu familia. Ubicados en el corazón de la ciudad, 
-                                nuestra tienda cuenta con amplios espacios para que puedas 
+                                Te invitamos a conocer Casa Mariel, un espacio
+                                diseñado pensando en ti y tu familia. Ubicados
+                                en el corazón de la ciudad, nuestra tienda
+                                cuenta con amplios espacios para que puedas
                                 recorrer cómodamente todas nuestras secciones.
                             </p>
                             <div className="store-features">
@@ -189,21 +196,26 @@ const Home = () => {
                                 </div>
                                 <div className="feature-item">
                                     <Clock size={20} />
-                                    <span>Horarios extendidos para tu comodidad</span>
+                                    <span>
+                                        Horarios extendidos para tu comodidad
+                                    </span>
                                 </div>
                                 <div className="feature-item">
                                     <MessageCircle size={20} />
                                     <span>Asesoría personalizada</span>
                                 </div>
                             </div>
-                            <button onClick={handleWhatsAppClick} className="btn btn-primary">
+                            <button
+                                onClick={handleWhatsAppClick}
+                                className="btn btn-primary"
+                            >
                                 <MessageCircle size={20} />
                                 Pregunta por nuestros horarios
                             </button>
                         </div>
                         <div className="store-image-large">
-                            <img 
-                                src={casaFachada} 
+                            <img
+                                src={casaFachada}
                                 alt="Fachada exterior de Casa Mariel"
                                 className="store-front-image"
                             />
@@ -219,43 +231,73 @@ const Home = () => {
             {/* What We Offer Section */}
             <section className="offerings">
                 <div className="container">
-                    <h2 className="section-title">¿Por Qué Elegirnos?</h2>
+                    <motion.h2
+                        className="section-title sparkles"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        ¿Por Qué Elegirnos?
+                    </motion.h2>
                     <div className="offerings-grid">
-                        <div className="offering-card">
-                            <div className="offering-icon">🚚</div>
-                            <h3>Entrega a Domicilio</h3>
-                            <p>
-                                Llevamos tus compras hasta la puerta de tu casa
-                                de forma segura y rápida.
-                            </p>
-                        </div>
-                        <div className="offering-card">
-                            <div className="offering-icon">💳</div>
-                            <h3>Múltiples Formas de Pago</h3>
-                            <p>
-                                Acepta efectivo, tarjetas de crédito/débito y
-                                transferencias bancarias.
-                            </p>
-                        </div>
-                        <div className="offering-card">
-                            <div className="offering-icon">🔧</div>
-                            <h3>Instalación y Servicio</h3>
-                            <p>
-                                Servicio de instalación profesional para
-                                electrodomésticos y muebles.
-                            </p>
-                        </div>
-                        <div className="offering-card">
-                            <div className="offering-icon">⭐</div>
-                            <h3>Garantía de Calidad</h3>
-                            <p>
-                                Todos nuestros productos cuentan con garantía y
-                                respaldo de fábrica.
-                            </p>
-                        </div>
+                        {["🚚", "💳", "🔧", "⭐"].map((icon, i) => (
+                            <motion.div
+                                key={i}
+                                className="offering-card"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 * i }}
+                            >
+                                <div className="offering-icon">{icon}</div>
+                                <h3>
+                                    {
+                                        [
+                                            "Entrega a Domicilio",
+                                            "Múltiples Formas de Pago",
+                                            "Instalación y Servicio",
+                                            "Garantía de Calidad",
+                                        ][i]
+                                    }
+                                </h3>
+                                <p>
+                                    {
+                                        [
+                                            "Llevamos tus compras hasta la puerta de tu casa de forma segura y rápida.",
+                                            "Aceptamos efectivo, tarjetas de crédito/débito y transferencias bancarias.",
+                                            "Servicio de instalación profesional para electrodomésticos y muebles.",
+                                            "Todos nuestros productos cuentan con garantía y respaldo de fábrica.",
+                                        ][i]
+                                    }
+                                </p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
+                <a
+                    href={`https://wa.me/${storeInfo.whatsappNumber}`}
+                    className="whatsapp-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    💬
+                </a>
             </section>
+
+            <button
+                className="whatsapp-floating-btn"
+                onClick={handleWhatsAppClick}
+                aria-label="Contactar por WhatsApp"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                >
+                    <path d="M20.52 3.48A11.73 11.73 0 0012 0a11.73 11.73 0 00-8.52 3.48 11.73 11.73 0 00-3.48 8.52c0 2.07.56 4.09 1.62 5.87L0 24l6.16-1.6a11.62 11.62 0 005.84 1.6h.02c3.15 0 6.12-1.23 8.36-3.48a11.73 11.73 0 003.48-8.52 11.73 11.73 0 00-3.54-8.52zm-8.52 17.27c-1.75 0-3.45-.47-4.94-1.37l-.35-.2-3.66.95.97-3.57-.23-.36a8.49 8.49 0 01-1.36-4.93 8.63 8.63 0 0115-6.1 8.5 8.5 0 012.5 6.05c0 4.74-3.86 8.6-8.61 8.6zm4.9-6.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.85 1.06-.15.18-.3.2-.57.07a7.88 7.88 0 01-2.32-1.43 8.58 8.58 0 01-1.58-1.96c-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51a.94.94 0 00.3-.51c.03-.14 0-.27-.02-.39-.05-.12-.6-1.45-.82-2-.22-.52-.45-.45-.62-.46a3.4 3.4 0 00-.78-.1c-.24 0-.57.09-.87.44s-1.14 1.12-1.14 2.74 1.17 3.18 1.33 3.41c.17.27 2.3 3.5 5.57 4.91a6.87 6.87 0 003.1.44c.53-.22 1.6-.65 1.83-1.28.22-.62.22-1.15.15-1.27-.07-.12-.26-.18-.53-.32z" />
+                </svg>
+            </button>
 
             {/* Location and Hours Section */}
             <section className="location-info">

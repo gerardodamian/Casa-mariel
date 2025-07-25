@@ -1,3 +1,4 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -5,25 +6,27 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
+  color: #3a2f2f;
+  background-color: #fff8f2;
 }
 
+/* Contenedor general */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* Botones */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
@@ -33,33 +36,34 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 94, 98, 0.4);
 }
 
 .btn-secondary {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #ff5e62;
+  border: 2px solid #ff5e62;
 }
 
 .btn-secondary:hover {
-  background: #667eea;
+  background: #ff5e62;
   color: white;
   transform: translateY(-2px);
 }
 
+/* Títulos de sección */
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: #2d3748;
+  color: #d6453d;
   position: relative;
 }
 
@@ -71,21 +75,21 @@ body {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
   border-radius: 2px;
 }
 
-/* Responsive Design */
+/* Responsivo */
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
   }
-  
+
   .section-title {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   .btn {
     padding: 10px 20px;
     font-size: 14px;
