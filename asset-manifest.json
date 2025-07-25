@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/casa-mariel/static/css/main.2102296d.css",
+    "main.js": "/casa-mariel/static/js/main.39953760.js",
+    "static/media/casa.webp": "/casa-mariel/static/media/casa.7fd3a6a0af845d6120b9.webp",
+    "index.html": "/casa-mariel/index.html",
+    "main.2102296d.css.map": "/casa-mariel/static/css/main.2102296d.css.map",
+    "main.39953760.js.map": "/casa-mariel/static/js/main.39953760.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2102296d.css",
+    "static/js/main.39953760.js"
+  ]
+}
